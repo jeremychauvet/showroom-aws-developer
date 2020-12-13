@@ -31,3 +31,6 @@ override.tf.json
 
 ## Infracost
 **/plan.*
+
+## Python
+**__pycache__**
