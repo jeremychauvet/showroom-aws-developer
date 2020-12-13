@@ -1,21 +1,22 @@
 .PHONY: init plan apply estimate-cost destroy validate
 
 init:
-	terraform init
+	cd infrastructure && terraform init
 
 plan:
-	terraform plan
+	cd infrastructure && terraform plan
 
 apply:
-	terraform apply
+	cd infrastructure && terraform apply
 
 validate:
 	pre-commit run --all-files
 
 estimate-cost:
-	terraform plan -out plan.save
-	terraform show -json plan.save > plan.json
+	cd infrastructure && \
+	terraform plan -out plan.save && \
+	terraform show -json plan.save > plan.json && \
 	infracost --tfjson ./plan.json
 
 destroy:
-	terraform destroy
+	cd infrastructure && terraform destroy
