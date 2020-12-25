@@ -1,4 +1,4 @@
-.PHONY: init plan apply estimate-cost destroy validate
+.PHONY: init plan apply validate estimate-cost destroy docker
 
 init:
 	cd infrastructure && terraform init
@@ -20,3 +20,6 @@ estimate-cost:
 
 destroy:
 	cd infrastructure && terraform destroy
+
+docker:
+	docker-compose up -d --build
