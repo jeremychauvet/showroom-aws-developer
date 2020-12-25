@@ -33,7 +33,5 @@ jobs:
           platforms: linux/386,linux/amd64
           push: true
           tags: |
-            python/sandbox:latest
-            python/sandbox:3.9
-            ghcr.io/python/sandbox:latest
-            ghcr.io/python/sandbox:3.9
+            ghcr.io/jeremychauvet/python/sandbox:latest
+            ghcr.io/jeremychauvet/python/sandbox:3.9
