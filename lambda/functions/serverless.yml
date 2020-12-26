@@ -10,6 +10,10 @@ provider:
 
 package:
   individually: true
+  exclude:
+    - '**'
+  include:
+    - order/handler.py
 
 functions:
   order:
