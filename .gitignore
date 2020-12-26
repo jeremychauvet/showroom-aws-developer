@@ -34,3 +34,6 @@ override.tf.json
 
 ## Python
 **__pycache__**
+
+# Serverless
+**/.serverless**
