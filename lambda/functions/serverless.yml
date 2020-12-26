@@ -18,3 +18,7 @@ package:
 functions:
   order:
     handler: order/handler.order
+    description: Validate credit score and put order in database.
+    reservedConcurrency: 5
+    events:
+      - sqs: arn:aws:sqs:eu-central-1:438231055637:order.fifo
