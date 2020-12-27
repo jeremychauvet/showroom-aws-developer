@@ -1,8 +1,19 @@
 import json
+import sys
 
 
 def order(event, context):
-    print("[INFO] Event : " + str(event))
+    try:
+        body = json.loads(event["Records"][0]["body"])
+        # If credit score superior or equal to 660, order is accepted.
+        if int(body["credit_score"]["score"]) >= 660:
+            print("[INFO] Order accepted")
+        else:
+            print(
+                "[INFO] Order rejected : credit score under 660 (actual : "
+                + body["credit_score"]["score"]
+                + ")."
+            )
 
-    if event.body.credit_score.score:
-        print("[DEBUG] Credit score : " + event.credit_score.score)
+    except:
+        print("[ERROR] " + str(sys.exc_info()[1]))
