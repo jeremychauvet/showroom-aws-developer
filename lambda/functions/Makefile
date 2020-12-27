@@ -7,4 +7,4 @@ validate:
 	pre-commit run --all-files
 
 test-order:
-	serverless invoke local --function order
+	serverless invoke local --function order --path order/test/payload.json
