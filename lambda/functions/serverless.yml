@@ -21,6 +21,7 @@ functions:
     description: Validate credit score and put order in database.
     reservedConcurrency: 5
     timeout: 2
+    tracing: true
     events:
       - sqs: arn:aws:sqs:eu-central-1:438231055637:order.fifo
       - sqs: arn:aws:sqs:eu-central-1:438231055637:order-dlq.fifo
