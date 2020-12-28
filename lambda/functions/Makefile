@@ -15,4 +15,5 @@ install-order:
 	cd order && $(INSTALL_CMD)
 
 test-order: install-order
-	serverless invoke local --function order --path order/test/payload.json
+	serverless invoke local --function order --path order/test/accepted_order_payload.json
+	serverless invoke local --function order --path order/test/rejected_order_payload.json
