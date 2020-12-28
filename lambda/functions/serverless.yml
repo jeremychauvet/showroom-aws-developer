@@ -25,3 +25,7 @@ functions:
     events:
       - sqs: arn:aws:sqs:eu-central-1:438231055637:order.fifo
       - sqs: arn:aws:sqs:eu-central-1:438231055637:order-dlq.fifo
+    tags:
+      App: MyOnlineBookStore
+      Environment: dev
+      Runtime: python3.8
