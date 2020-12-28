@@ -1,0 +1,69 @@
+{
+  "widgets": [
+    {
+      "type": "metric",
+      "x": 0,
+      "y": 0,
+      "width": 12,
+      "height": 12,
+      "properties": {
+        "view": "timeSeries",
+        "stacked": false,
+        "metrics": [
+          [
+            "AWS/Lambda",
+            "Duration",
+            "FunctionName",
+            "MyOnlineBookStore-dev-order"
+          ]
+        ],
+        "region": "eu-central-1",
+        "title": "Lambda duration"
+      }
+    },
+    {
+      "type": "metric",
+      "x": 12,
+      "y": 0,
+      "width": 12,
+      "height": 12,
+      "properties": {
+        "metrics": [
+          [
+            "AWS/Lambda",
+            "Invocations",
+            "FunctionName",
+            "MyOnlineBookStore-dev-order",
+            {
+              "id": "m2"
+            }
+          ],
+          [
+            ".",
+            "Errors",
+            ".",
+            ".",
+            {
+              "id": "m1",
+              "yAxis": "left"
+            }
+          ]
+        ],
+        "view": "pie",
+        "region": "eu-central-1",
+        "stacked": true,
+        "stat": "Sum",
+        "period": 300,
+        "setPeriodToTimeRange": true,
+        "liveData": false,
+        "legend": {
+          "position": "bottom"
+        },
+        "labels": {
+          "visible": true
+        },
+        "title": "Error %"
+      }
+    }
+  ]
+}
