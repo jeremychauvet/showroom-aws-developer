@@ -64,6 +64,20 @@
         },
         "title": "Error %"
       }
+    },
+    {
+      "type": "log",
+      "x": 0,
+      "y": 12,
+      "width": 24,
+      "height": 6,
+      "properties": {
+        "query": "SOURCE '/aws/lambda/MyOnlineBookStore-dev-order' | filter @message like /ERROR/",
+        "region": "eu-central-1",
+        "stacked": false,
+        "title": "Latest Lambda issues",
+        "view": "table"
+      }
     }
   ]
 }
