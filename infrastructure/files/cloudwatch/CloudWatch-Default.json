@@ -4,47 +4,42 @@
       "type": "metric",
       "x": 0,
       "y": 0,
-      "width": 12,
+      "width": 9,
       "height": 12,
       "properties": {
-        "view": "timeSeries",
-        "stacked": false,
         "metrics": [
           [
             "AWS/Lambda",
-            "Duration",
-            "FunctionName",
-            "MyOnlineBookStore-dev-order"
+            "Duration"
           ]
         ],
+        "view": "timeSeries",
+        "stacked": false,
         "region": "eu-central-1",
-        "title": "Lambda duration"
+        "title": "Lambda duration",
+        "period": 300,
+        "stat": "Average"
       }
     },
     {
       "type": "metric",
-      "x": 12,
+      "x": 9,
       "y": 0,
-      "width": 12,
+      "width": 9,
       "height": 12,
       "properties": {
         "metrics": [
           [
             "AWS/Lambda",
-            "Invocations",
-            "FunctionName",
-            "MyOnlineBookStore-dev-order",
+            "Errors",
             {
-              "id": "m2"
+              "yAxis": "left"
             }
           ],
           [
             ".",
-            "Errors",
-            ".",
-            ".",
+            "Invocations",
             {
-              "id": "m1",
               "yAxis": "left"
             }
           ]
@@ -72,11 +67,36 @@
       "width": 24,
       "height": 6,
       "properties": {
-        "query": "SOURCE '/aws/lambda/MyOnlineBookStore-dev-order' | filter @message like /ERROR/",
+        "query": "SOURCE '/aws/lambda/MyOnlineBookStore-dev-order' | SOURCE '/aws/lambda/MyOnlineBookStore-dev-book' | filter @message like /ERROR/",
         "region": "eu-central-1",
         "stacked": false,
         "title": "Latest Lambda issues",
         "view": "table"
+      }
+    },
+    {
+      "type": "metric",
+      "x": 18,
+      "y": 0,
+      "width": 6,
+      "height": 12,
+      "properties": {
+        "metrics": [
+          [
+            "AWS/Lambda",
+            "Invocations"
+          ],
+          [
+            ".",
+            "Errors"
+          ]
+        ],
+        "view": "singleValue",
+        "region": "eu-central-1",
+        "stat": "Sum",
+        "period": 86400,
+        "singleValueFullPrecision": false,
+        "setPeriodToTimeRange": true
       }
     }
   ]
