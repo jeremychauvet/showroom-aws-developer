@@ -6,7 +6,7 @@ Accepted - 28/12/20 - Jeremy Chauvet
 
 ## Context
 
-Our backend is composed by a serie of Lambdas. As these Lambda will be consumed by an front office, they must be securely exposed. AWS managed Api Gateway is a solution that we will use, but we must choose between multiple types of API : 
+Our backend is composed by a serie of Lambdas. As these Lambda will be consumed by an front office, they must be securely exposed. AWS managed Api Gateway is a solution that we will use, but we must choose between multiple types of API :
 
 - REST API
 - HTTP API
