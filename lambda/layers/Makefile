@@ -1,5 +1,5 @@
 .PHONY: build aws-xray-sdk
-LAYERS_PATH=./
+LAYERS_PATH=.
 TMP_PATH=$(LAYERS_PATH)/tmp
 OUTPUT_PATH=$(LAYERS_PATH)/output
 
