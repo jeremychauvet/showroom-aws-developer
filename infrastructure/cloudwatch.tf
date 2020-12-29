@@ -1,4 +1,108 @@
 resource "aws_cloudwatch_dashboard" "default" {
   dashboard_name = "CloudWatch-Default"
-  dashboard_body = file("./files/cloudwatch/CloudWatch-Default.json")
+  dashboard_body = <<EOF
+{
+  "widgets": [
+    {
+      "type": "metric",
+      "x": 0,
+      "y": 0,
+      "width": 9,
+      "height": 12,
+      "properties": {
+        "metrics": [
+          [
+            "AWS/Lambda",
+            "Duration"
+          ]
+        ],
+        "view": "timeSeries",
+        "stacked": false,
+        "region": "eu-central-1",
+        "title": "Lambda duration",
+        "period": 300,
+        "stat": "Average"
+      }
+    },
+    {
+      "type": "metric",
+      "x": 9,
+      "y": 0,
+      "width": 9,
+      "height": 12,
+      "properties": {
+        "metrics": [
+          [
+            "AWS/Lambda",
+            "Errors",
+            {
+              "yAxis": "left"
+            }
+          ],
+          [
+            ".",
+            "Invocations",
+            {
+              "yAxis": "left"
+            }
+          ]
+        ],
+        "view": "pie",
+        "region": "eu-central-1",
+        "stacked": true,
+        "stat": "Sum",
+        "period": 300,
+        "setPeriodToTimeRange": true,
+        "liveData": false,
+        "legend": {
+          "position": "bottom"
+        },
+        "labels": {
+          "visible": true
+        },
+        "title": "Error %"
+      }
+    },
+    {
+      "type": "log",
+      "x": 0,
+      "y": 12,
+      "width": 24,
+      "height": 6,
+      "properties": {
+        "query": "SOURCE '/aws/lambda/MyOnlineBookStore-dev-order' | SOURCE '/aws/lambda/MyOnlineBookStore-dev-book' | filter @message like /ERROR/",
+        "region": "eu-central-1",
+        "stacked": false,
+        "title": "Latest Lambda issues",
+        "view": "table"
+      }
+    },
+    {
+      "type": "metric",
+      "x": 18,
+      "y": 0,
+      "width": 6,
+      "height": 12,
+      "properties": {
+        "metrics": [
+          [
+            "AWS/Lambda",
+            "Invocations"
+          ],
+          [
+            ".",
+            "Errors"
+          ]
+        ],
+        "view": "singleValue",
+        "region": "eu-central-1",
+        "stat": "Sum",
+        "period": 86400,
+        "singleValueFullPrecision": false,
+        "setPeriodToTimeRange": true
+      }
+    }
+  ]
+}
+EOF
 }
