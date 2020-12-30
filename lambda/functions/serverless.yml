@@ -7,6 +7,8 @@ provider:
   stage: dev
   region: eu-central-1
   memorySize: 128 # optional, in MB, default is 1024
+  logs:
+    httpApi: true
 
 package:
   individually: true
@@ -14,6 +16,7 @@ package:
     - '**'
   include:
     - order/handler.py
+    - book/handler.py
 
 functions:
   order:
@@ -27,6 +30,24 @@ functions:
     events:
       - sqs: arn:aws:sqs:eu-central-1:438231055637:order.fifo
       - sqs: arn:aws:sqs:eu-central-1:438231055637:order-dlq.fifo
+    tags:
+      App: MyOnlineBookStore
+      Environment: dev
+      Runtime: python3.8
+  book:
+    handler: book/handler.book
+    layers:
+      - { Ref: AwsXraySdkLambdaLayer }
+    description: Add, edit or remove book in database
+    timeout: 2
+    tracing: true
+    events:
+      - httpApi:
+        method: POST
+        path: /book
+        metrics: true
+      - sqs: arn:aws:sqs:eu-central-1:438231055637:book
+
     tags:
       App: MyOnlineBookStore
       Environment: dev
