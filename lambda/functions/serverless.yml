@@ -16,7 +16,8 @@ package:
     - '**'
   include:
     - order/handler.py
-    - book/handler.py
+    - book/display/handler.py
+    - book/manage/handler.py
 
 functions:
   order:
@@ -42,9 +43,6 @@ functions:
     timeout: 2
     tracing: true
     events:
-      - httpApi:
-          method: POST
-          path: /book/manage
       - sqs: arn:aws:sqs:eu-central-1:438231055637:book
     tags:
       App: MyOnlineBookStore
@@ -61,7 +59,6 @@ functions:
       - httpApi:
           method: GET
           path: /book/display
-      - sqs: arn:aws:sqs:eu-central-1:438231055637:book
     tags:
       App: MyOnlineBookStore
       Environment: dev
