@@ -29,15 +29,14 @@ def insert_messages_in_queue():
                     "isbn": str(fake.isbn13()),
                     "title": str(fake.sentence(nb_words=5)),
                     "author": str(fake.name()),
-                    "stock": 0
+                    "stock": 0,
                 }
             }
             # Convert dictionnary in JSON.
             payload = json.dumps(payload)
             # Sent message to queue.
             send_message_response = client.send_message(
-                QueueUrl=queue_url,
-                MessageBody=payload
+                QueueUrl=queue_url, MessageBody=payload
             )
 
             if send_message_response["ResponseMetadata"]["HTTPStatusCode"] == 200:
@@ -58,6 +57,7 @@ def insert_messages_in_queue():
 
     except:
         print("[ERROR] " + str(sys.exc_info()[1]))
+
 
 if __name__ == "__main__":
     insert_messages_in_queue()
