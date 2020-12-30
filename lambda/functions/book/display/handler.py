@@ -6,8 +6,8 @@ from aws_xray_sdk.core import patch_all
 patch_all()
 
 
-@xray_recorder.capture("# Add a book to library")
-def book(event, context):
+@xray_recorder.capture("# Display books available in library")
+def displayBook(event, context):
     try:
         # Convert string to JSON.
         body = json.loads(event["Records"][0]["body"])

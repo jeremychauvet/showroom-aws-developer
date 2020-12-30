@@ -34,8 +34,8 @@ functions:
       App: MyOnlineBookStore
       Environment: dev
       Runtime: python3.8
-  book:
-    handler: book/handler.book
+  manageBook:
+    handler: book/manage/handler.manageBook
     layers:
       - { Ref: AwsXraySdkLambdaLayer }
     description: Add, edit or remove book in database
@@ -44,7 +44,23 @@ functions:
     events:
       - httpApi:
           method: POST
-          path: /book
+          path: /book/manage
+      - sqs: arn:aws:sqs:eu-central-1:438231055637:book
+    tags:
+      App: MyOnlineBookStore
+      Environment: dev
+      Runtime: python3.8
+  displayBook:
+    handler: book/display/handler.displayBook
+    layers:
+      - { Ref: AwsXraySdkLambdaLayer }
+    description: Display books available in database
+    timeout: 2
+    tracing: true
+    events:
+      - httpApi:
+          method: GET
+          path: /book/display
       - sqs: arn:aws:sqs:eu-central-1:438231055637:book
     tags:
       App: MyOnlineBookStore
