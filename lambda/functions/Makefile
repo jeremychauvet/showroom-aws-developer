@@ -3,6 +3,7 @@ INSTALL_CMD=pip3 install -r requirements.txt
 
 deploy:
 	serverless deploy
+	@rm -fr ./.serverless/*.zip
 
 validate:
 	pre-commit run --all-files
