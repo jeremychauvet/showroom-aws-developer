@@ -16,7 +16,7 @@ override.tf.json
 **__pycache__**
 
 # Serverless
-**/.serverless**
+**/.serverless/**
 lambda/layers/*.zip
 
 # MacOS
