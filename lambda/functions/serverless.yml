@@ -46,7 +46,6 @@ functions:
           method: POST
           path: /book
       - sqs: arn:aws:sqs:eu-central-1:438231055637:book
-
     tags:
       App: MyOnlineBookStore
       Environment: dev
