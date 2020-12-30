@@ -43,9 +43,8 @@ functions:
     tracing: true
     events:
       - httpApi:
-        method: POST
-        path: /book
-        metrics: true
+          method: POST
+          path: /book
       - sqs: arn:aws:sqs:eu-central-1:438231055637:book
 
     tags:
