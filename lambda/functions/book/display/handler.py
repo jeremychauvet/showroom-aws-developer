@@ -7,11 +7,14 @@ patch_all()
 
 
 @xray_recorder.capture("# Display books available in library")
-def displayBook(event, context):
+def display_book(event, context):
     try:
-        # Convert string to JSON.
-        body = json.loads(event["Records"][0]["body"])
-        print(body)
+        # Mock.
+        body = {
+            "status": 200,
+        }
+
+        return json.dumps(body)
 
     except:
         print("[ERROR] " + str(sys.exc_info()[1]))

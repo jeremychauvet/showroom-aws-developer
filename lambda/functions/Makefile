@@ -1,5 +1,5 @@
 .PHONY: deploy validate
-INSTALL_CMD=pip3 install -r requirements.txt
+INSTALL_CMD=python3 -m pip install -r requirements.txt
 
 deploy:
 	serverless deploy
@@ -27,4 +27,4 @@ install-display-book:
 	cd book/display && $(INSTALL_CMD)
 
 test-display-book: install-display-book
-	serverless invoke local --function displayBook
+	serverless invoke local --function display_book

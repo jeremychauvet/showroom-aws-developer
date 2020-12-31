@@ -35,8 +35,9 @@ functions:
       App: MyOnlineBookStore
       Environment: dev
       Runtime: python3.8
-  manageBook:
-    handler: book/manage/handler.manageBook
+
+  manage_book:
+    handler: book/manage/handler.manage_book
     layers:
       - { Ref: AwsXraySdkLambdaLayer }
     description: Add, edit or remove book in database
@@ -48,8 +49,9 @@ functions:
       App: MyOnlineBookStore
       Environment: dev
       Runtime: python3.8
-  displayBook:
-    handler: book/display/handler.displayBook
+
+  display_book:
+    handler: book/display/handler.display_book
     layers:
       - { Ref: AwsXraySdkLambdaLayer }
     description: Display books available in database

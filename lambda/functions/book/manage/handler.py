@@ -7,7 +7,7 @@ patch_all()
 
 
 @xray_recorder.capture("# Add a book to library")
-def manageBook(event, context):
+def manage_book(event, context):
     try:
         # Convert string to JSON.
         body = json.loads(event["Records"][0]["body"])
