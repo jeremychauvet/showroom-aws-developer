@@ -17,7 +17,7 @@ package:
   include:
     - order/handler.py
     - book/display/handler.py
-    - book/manage/handler.py
+    - book/add/handler.py
 
 functions:
   order:
@@ -36,11 +36,11 @@ functions:
       Environment: dev
       Runtime: python3.8
 
-  manage_book:
-    handler: book/manage/handler.manage_book
+  add_book:
+    handler: book/add/handler.add_book
     layers:
       - { Ref: AwsXraySdkLambdaLayer }
-    description: Add, edit or remove book in database
+    description: Add book in database
     timeout: 2
     tracing: true
     events:
