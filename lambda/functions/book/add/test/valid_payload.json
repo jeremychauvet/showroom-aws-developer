@@ -1,0 +1,20 @@
+{
+    "Records": [
+        {
+            "messageId": "8292ac26-8c2d-4b0c-a92a-65e4f9205aaa",
+            "receiptHandle": "AQEBJMn32aCPH/YQms2xACwy39hrrZZtz7J/sroJikI8zJrxWrobGlNsh3gTD4eoaVqH1YIIZbrg7X40Qf8nE78UJr5GjaRv74dHh2Cv5fgoIWmRNVVHC9WGwu4Edgdonb59LWor5wvAid+pvG+w2Kn4fEhzdJFVFOSxaYFo2OyocR1XZk5C7cnyp781ah3wJ7dfuRYMoTVVKOgLC34MmXjFSWTtracIEPtKOA9MS7zmpGv6CrNVgqFXqXpCUnEPMh5JaiMf3SJ66KeEIiPkDCLB2tBudmP2QDmFDncRp0+ajVW5TyGwETGLc2fkT2AApb9jvb8K+sw5KW0fE/zccybMvgTM2DqBMyZ9SkjO0Gy+FTPIevT3SedmOMNWxDmpKC2y",
+            "body": "{\"book\": {\"isbn\": \"978-1-00-417694-6\",\"title\": \"Fire success opportunity Mrs site.\",\"author\": \"James Myers\",\"stock\": 0}}",
+            "attributes": {
+                "ApproximateReceiveCount": "1",
+                "SentTimestamp": "1609447897789",
+                "SenderId": "AIDAWMCE3HUKVAX2ZSN2B",
+                "ApproximateFirstReceiveTimestamp": "1609447897795"
+            },
+            "messageAttributes": {},
+            "md5OfBody": "963a192f1bd6dc5043aed38e11cbe759",
+            "eventSource": "aws:sqs",
+            "eventSourceARN": "arn:aws:sqs:eu-central-1: 438231055637:book",
+            "awsRegion": "eu-central-1"
+        }
+    ]
+}
