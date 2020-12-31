@@ -30,7 +30,7 @@ resource "aws_dynamodb_table" "book" {
   }
 
   server_side_encryption {
-    enabled     = true
+    enabled = true
   }
 
   tags = var.tags
