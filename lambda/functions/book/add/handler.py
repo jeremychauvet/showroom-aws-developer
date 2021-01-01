@@ -25,7 +25,7 @@ def add_book(event, context):
         stock = body["book"]["stock"]
 
         # # Load AWS SDK client for DynamoDB.
-        client = boto3.resource("dynamodb", region=aws_region)
+        client = boto3.resource("dynamodb", region_name=aws_region)
         table = client.Table(dynamodb_table_name)
 
         # Insert data in table.
