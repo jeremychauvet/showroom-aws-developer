@@ -40,8 +40,8 @@ functions:
     timeout: 2
     tracing: true
     events:
-      - sqs: arn:aws:sqs:eu-central-1:438231055637:order.fifo
-      - sqs: arn:aws:sqs:eu-central-1:438231055637:order-dlq.fifo
+      - sqs: arn:aws:sqs:eu-central-1:*:order.fifo
+      - sqs: arn:aws:sqs:eu-central-1:*:order-dlq.fifo
     tags:
       App: MyOnlineBookStore
       Environment: dev
@@ -55,7 +55,7 @@ functions:
     timeout: 2
     tracing: true
     events:
-      - sqs: arn:aws:sqs:eu-central-1:438231055637:book
+      - sqs: arn:aws:sqs:eu-central-1:*:book
     tags:
       App: MyOnlineBookStore
       Environment: dev
