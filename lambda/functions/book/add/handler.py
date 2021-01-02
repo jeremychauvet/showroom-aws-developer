@@ -1,6 +1,7 @@
 import json
 import sys
 import boto3
+import os
 from aws_xray_sdk.core import xray_recorder
 from aws_xray_sdk.core import patch_all
 
@@ -10,9 +11,9 @@ patch_all()
 @xray_recorder.capture("# Add a book to library")
 def add_book(event, context):
 
-    # Can be set as environment variable or retrieve via SSM.
-    aws_region = "eu-central-1"
-    dynamodb_table_name = "Book"
+    # Get lambda parameters from environment variables defined in severless.yml.
+    aws_region = os.getenv('AWS_REGION_NAME')
+    dynamodb_table_name = os.getenv('DYNAMODB_TABLE_NAME')
 
     try:
         # Convert string to JSON.
@@ -24,7 +25,7 @@ def add_book(event, context):
         author = body["book"]["author"]
         stock = body["book"]["stock"]
 
-        # # Load AWS SDK client for DynamoDB.
+        # Load AWS SDK client for DynamoDB.
         client = boto3.resource("dynamodb", region_name=aws_region)
         table = client.Table(dynamodb_table_name)
 
