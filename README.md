@@ -8,7 +8,20 @@ To be realistic, we have set a business context for this showroom. Our client is
 
 ## Architecture
 
-TODO
+This project is based on a serverless architecture. This design is also event driven.
+
+![architecture](./docs/MyOnlineBookStore_architecture.png "Architecture")
+
+### Back-office
+
+* Lambda are used as compute power.
+  * Language : Python 3.8
+  * Framework : Serverless
+* DynamoDB is used as database.
+
+### Front-office
+
+* VueJS app
 
 ## Development advice
 
