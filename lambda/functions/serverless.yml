@@ -19,7 +19,7 @@ provider:
       - dynamodb:PutItem
       - dynamodb:UpdateItem
       - dynamodb:DeleteItem
-    Resource: 'arn:aws:dynamodb:eu-central-1:*:*'
+    Resource: 'arn:aws:dynamodb:${self:provider.region}:438231055637:*'
 
 package:
   individually: true
@@ -40,14 +40,14 @@ functions:
     timeout: 2
     tracing: true
     events:
-      - sqs: arn:aws:sqs:eu-central-1:*:order.fifo
-      - sqs: arn:aws:sqs:eu-central-1:*:order-dlq.fifo
+      - sqs: arn:aws:sqs:${self:provider.region}:438231055637:order.fifo
+      - sqs: arn:aws:sqs:${self:provider.region}:438231055637:order-dlq.fifo
     tags:
       App: MyOnlineBookStore
       Environment: dev
       Runtime: python3.8
 
-  add_book:
+  addBook:
     handler: book/add/handler.add_book
     layers:
       - { Ref: AwsXraySdkLambdaLayer }
@@ -55,13 +55,16 @@ functions:
     timeout: 2
     tracing: true
     events:
-      - sqs: arn:aws:sqs:eu-central-1:*:book
+      - sqs: arn:aws:sqs:${self:provider.region}:438231055637:book
     tags:
       App: MyOnlineBookStore
       Environment: dev
       Runtime: python3.8
+    environment:
+      AWS_REGION_NAME: ${self:provider.region}
+      DYNAMODB_TABLE_NAME: Book
 
-  display_book:
+  displayBook:
     handler: book/display/handler.display_book
     layers:
       - { Ref: AwsXraySdkLambdaLayer }
@@ -76,6 +79,9 @@ functions:
       App: MyOnlineBookStore
       Environment: dev
       Runtime: python3.8
+    environment:
+      AWS_REGION_NAME: ${self:provider.region}
+      DYNAMODB_TABLE_NAME: Book
 
 layers:
   awsXraySdk:
