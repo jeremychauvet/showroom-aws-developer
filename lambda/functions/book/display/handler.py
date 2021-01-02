@@ -11,8 +11,8 @@ patch_all()
 def display_book(event, context):
 
     # Get lambda parameters from environment variables defined in severless.yml.
-    aws_region = os.getenv('AWS_REGION_NAME')
-    dynamodb_table_name = os.getenv('DYNAMODB_TABLE_NAME')
+    aws_region = os.getenv("AWS_REGION_NAME")
+    dynamodb_table_name = os.getenv("DYNAMODB_TABLE_NAME")
 
     try:
         # Load AWS SDK client for DynamoDB.
