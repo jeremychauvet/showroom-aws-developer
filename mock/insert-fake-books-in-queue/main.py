@@ -12,7 +12,7 @@ client = boto3.client("sqs", region_name="eu-central-1")
 
 # Variables.
 QUEUE_NAME = "book"
-NUMBER_OF_MESSAGES_TO_SEND = 1
+NUMBER_OF_MESSAGES_TO_SEND = 10
 
 
 def insert_messages_in_queue():
