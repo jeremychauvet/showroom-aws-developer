@@ -19,7 +19,7 @@ provider:
       - dynamodb:PutItem
       - dynamodb:UpdateItem
       - dynamodb:DeleteItem
-    Resource: 'arn:aws:dynamodb:${self:provider.region}:438231055637:*'
+    Resource: 'arn:aws:dynamodb:${self:provider.region}:*:*'
 
 package:
   individually: true
@@ -36,12 +36,29 @@ functions:
     layers:
       - { Ref: AwsXraySdkLambdaLayer }
     description: Validate credit score and put order in database.
-    reservedConcurrency: 5
     timeout: 2
     tracing: true
     events:
-      - sqs: arn:aws:sqs:${self:provider.region}:438231055637:order.fifo
-      - sqs: arn:aws:sqs:${self:provider.region}:438231055637:order-dlq.fifo
+      - sqs:
+          arn:
+            Fn::Join:
+              - ':'
+              - - arn
+                - aws
+                - sqs
+                - Ref: AWS::Region
+                - Ref: AWS::AccountId
+                - order.fifo
+      - sqs:
+          arn:
+            Fn::Join:
+              - ':'
+              - - arn
+                - aws
+                - sqs
+                - Ref: AWS::Region
+                - Ref: AWS::AccountId
+                - order-dlq.fifo
     tags:
       App: MyOnlineBookStore
       Environment: dev
@@ -55,7 +72,16 @@ functions:
     timeout: 2
     tracing: true
     events:
-      - sqs: arn:aws:sqs:${self:provider.region}:438231055637:book
+      - sqs:
+          arn:
+            Fn::Join:
+              - ':'
+              - - arn
+                - aws
+                - sqs
+                - Ref: AWS::Region
+                - Ref: AWS::AccountId
+                - book
     tags:
       App: MyOnlineBookStore
       Environment: dev
