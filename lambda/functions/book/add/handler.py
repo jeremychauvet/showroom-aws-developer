@@ -6,6 +6,7 @@ from aws_xray_sdk.core import xray_recorder
 from aws_xray_sdk.core import patch_all
 
 patch_all()
+subsegment = xray_recorder.begin_subsegment("annotations")
 
 
 @xray_recorder.capture("# Add a book to library")
@@ -26,10 +27,12 @@ def add_book(event, context):
         stock = body["book"]["stock"]
 
         # Load AWS SDK client for DynamoDB.
+        subsegment.put_annotation("[INFO]", "Init DynamoDB client")
         client = boto3.resource("dynamodb", region_name=aws_region)
         table = client.Table(dynamodb_table_name)
 
         # Insert data in table.
+        subsegment.put_annotation("[INFO]", "Put item in table")
         response = table.put_item(
             Item={
                 "ISBN": isbn,

@@ -4,12 +4,12 @@ from aws_xray_sdk.core import xray_recorder
 from aws_xray_sdk.core import patch_all
 
 patch_all()
+subsegment = xray_recorder.begin_subsegment("annotations")
 
 
 @xray_recorder.capture("# Validate order")
 def order(event, context):
     try:
-        subsegment = xray_recorder.begin_subsegment("annotations")
         # Convert string to JSON.
         body = json.loads(event["Records"][0]["body"])
         credit_score = int(body["credit_score"]["score"])

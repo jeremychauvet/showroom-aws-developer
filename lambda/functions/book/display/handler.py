@@ -5,6 +5,7 @@ from aws_xray_sdk.core import xray_recorder
 from aws_xray_sdk.core import patch_all
 
 patch_all()
+subsegment = xray_recorder.begin_subsegment("annotations")
 
 
 @xray_recorder.capture("# Display books available in library")
@@ -16,12 +17,14 @@ def display_book(event, context):
 
     try:
         # Load AWS SDK client for DynamoDB.
+        subsegment.put_annotation("[INFO]", "Init DynamoDB client")
         client = boto3.resource("dynamodb", region_name=aws_region)
         table = client.Table(dynamodb_table_name)
 
+        subsegment.put_annotation("[INFO]", "Starting table scan")
+        # Get temporary all items with a scan, bad for performance, but development related.
         response = table.scan()
-
-        print(response)
+        return response["Items"]
 
     except:
         print("[ERROR] " + str(sys.exc_info()[1]))
