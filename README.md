@@ -32,6 +32,8 @@ This project is based on a serverless architecture. This design is also event dr
 We recommand to use [pyright](https://github.com/microsoft/pyright) extension for VSCode.
 This plugin use file pyrightconfig.json at projet root, feel free to adjust it to your needs.
 
+You also need AWS Amplify CLI : `npm install -g @aws-amplify/cli`
+
 ## Special thanks
 
 * [Fernando Medina Corey](https://github.com/fernando-mc) for his [code](https://github.com/fernando-mc/aws-http-api-python-cognito) on Cognito
