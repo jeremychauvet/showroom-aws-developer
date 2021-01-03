@@ -162,7 +162,7 @@ resources:
         UserPoolId:
           Ref: serviceUserPool
         CallbackURLs:
-          - https://localhost:3000
+          - https://localhost:8080
         ExplicitAuthFlows:
           - ALLOW_USER_SRP_AUTH
           - ALLOW_REFRESH_TOKEN_AUTH
