@@ -1,3 +1,5 @@
+.PHONY: ci clean build deploy
+
 ci: clean build deploy
 
 clean:
