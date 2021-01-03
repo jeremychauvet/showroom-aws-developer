@@ -31,3 +31,4 @@ This plugin use file pyrightconfig.json at projet root, feel free to adjust it t
 ## Special thanks
 
 * [Fernando Medina Corey](https://github.com/fernando-mc) for his [code](https://github.com/fernando-mc/aws-http-api-python-cognito) on Cognito
+* [jnabor](https://github.com/jnabor) for this code about Cognito authentication with VueJS.
