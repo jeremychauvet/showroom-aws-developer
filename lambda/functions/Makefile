@@ -1,9 +1,12 @@
-.PHONY: deploy validate
+.PHONY: deploy destroy validate
 INSTALL_CMD=python3 -m pip install -r requirements.txt
 
 deploy:
 	serverless deploy
 	@rm -fr ./.serverless/*.zip
+
+destroy:
+	aws cloudformation delete-stack --stack-name MyOnlineBookStore-dev
 
 validate:
 	pre-commit run --all-files
