@@ -1,0 +1,17 @@
+{
+  "auth": {
+    "myonlinebookstore4fff4554": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false
+    }
+  },
+  "hosting": {
+    "amplifyhosting": {
+      "service": "amplifyhosting",
+      "type": "cicd",
+      "lastPushTimeStamp": "2021-01-03T20:53:43.928Z"
+    }
+  }
+}

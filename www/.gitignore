@@ -22,3 +22,18 @@ yarn-error.log*
 
 # Don't commit your aws mobile configuration file
 .envrc
+
+#amplify
+./www/amplify/\#current-cloud-backend
+./www/amplify/.config/local-*
+./www/amplify/logs
+./www/amplify/mock-data
+./www/amplify/backend/amplify-meta.json
+./www/amplify/backend/awscloudformation
+./www/amplify/backend/.temp
+./www/awsconfiguration.json
+./www/amplifyconfiguration.json
+./www/amplify-build-config.json
+./www/amplify-gradle-config.json
+./www/amplifytools.xcconfig
+./www/.secret-*
