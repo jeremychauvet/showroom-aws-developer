@@ -10,16 +10,29 @@ provider:
   logs:
     httpApi: true
   iamRoleStatements:
-  - Effect: Allow
-    Action:
-      - dynamodb:DescribeTable
-      - dynamodb:Query
-      - dynamodb:Scan
-      - dynamodb:GetItem
-      - dynamodb:PutItem
-      - dynamodb:UpdateItem
-      - dynamodb:DeleteItem
-    Resource: 'arn:aws:dynamodb:${self:provider.region}:*:*'
+    - Effect: Allow
+      Action:
+        - dynamodb:DescribeTable
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      Resource: 'arn:aws:dynamodb:${self:provider.region}:*:*'
+  httpApi:
+    authorizers:
+      serviceAuthorizer:
+        identitySource: $request.header.Authorization
+        issuerUrl:
+          Fn::Join:
+          - ''
+          - - 'https://cognito-idp.'
+            - '${opt:region, self:provider.region}'
+            - '.amazonaws.com/'
+            - Ref: serviceUserPool
+        audience:
+          - Ref: serviceUserPoolClient
 
 package:
   individually: true
@@ -119,3 +132,45 @@ layers:
       - python3.8
     licenseInfo: GPLv3
     retain: false # optional, false by default. If true, layer versions are not deleted as new ones are created
+
+resources:
+  Resources:
+    HttpApi:
+      DependsOn: serviceUserPool
+    serviceUserPool:
+      Type: AWS::Cognito::UserPool
+      Properties:
+        UserPoolName: myOnlineBookStore-${opt:stage, self:provider.stage}UserPool
+        UsernameAttributes:
+          - email
+        AutoVerifiedAttributes:
+          - email
+    serviceUserPoolClient:
+      Type: AWS::Cognito::UserPoolClient
+      Properties:
+        ClientName: myOnlineBookStore-${opt:stage, self:provider.stage}PoolClient
+        AllowedOAuthFlows:
+          - implicit
+        AllowedOAuthFlowsUserPoolClient: true
+        AllowedOAuthScopes:
+          - phone
+          - email
+          - openid
+          - profile
+          - aws.cognito.signin.user.admin
+        UserPoolId:
+          Ref: serviceUserPool
+        CallbackURLs:
+          - https://localhost:3000
+        ExplicitAuthFlows:
+          - ALLOW_USER_SRP_AUTH
+          - ALLOW_REFRESH_TOKEN_AUTH
+        GenerateSecret: false
+        SupportedIdentityProviders:
+          - COGNITO
+    serviceUserPoolDomain:
+      Type: AWS::Cognito::UserPoolDomain
+      Properties:
+        UserPoolId:
+          Ref: serviceUserPool
+        Domain: myOnlineBookStoreDomain-${opt:stage, self:provider.stage}
