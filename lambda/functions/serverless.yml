@@ -114,6 +114,7 @@ functions:
       - httpApi:
           method: GET
           path: /book/display
+          authorizer: serviceAuthorizer
     tags:
       App: MyOnlineBookStore
       Environment: dev
