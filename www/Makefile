@@ -1,11 +1,14 @@
-.PHONY: ci clean build deploy
+.PHONY: ci clean build deploy install
 
 ci: clean build deploy
 
 clean:
 	rm -rf dist
 
-build:
+install:
+	yarn install
+
+build: install
 	yarn build
 
 deploy:
