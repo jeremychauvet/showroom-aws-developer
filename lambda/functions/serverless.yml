@@ -77,7 +77,7 @@ functions:
       Environment: dev
       Runtime: python3.8
 
-  addBook:
+  book-add:
     handler: book/add/handler.add_book
     layers:
       - { Ref: AwsXraySdkLambdaLayer }
@@ -103,7 +103,7 @@ functions:
       AWS_REGION_NAME: ${self:provider.region}
       DYNAMODB_TABLE_NAME: Book
 
-  displayBook:
+  book-display:
     handler: book/display/handler.display_book
     layers:
       - { Ref: AwsXraySdkLambdaLayer }
@@ -173,4 +173,4 @@ resources:
       Properties:
         UserPoolId:
           Ref: serviceUserPool
-        Domain: myOnlineBookStoreDomain-${opt:stage, self:provider.stage}
+        Domain: myonlinebookstoredomain-${opt:stage, self:provider.stage}
