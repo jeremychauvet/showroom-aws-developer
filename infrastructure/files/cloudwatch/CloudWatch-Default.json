@@ -67,7 +67,7 @@
       "width": 24,
       "height": 6,
       "properties": {
-        "query": "SOURCE '/aws/lambda/MyOnlineBookStore-dev-order' | SOURCE '/aws/lambda/MyOnlineBookStore-dev-book' | filter @message like /ERROR/",
+        "query": "SOURCE '/aws/lambda/MyOnlineBookStore-dev-order' | SOURCE '/aws/lambda/MyOnlineBookStore-dev-book-add' | SOURCE '/aws/lambda/MyOnlineBookStore-dev-book-display' | filter @message like /ERROR/",
         "region": "eu-central-1",
         "stacked": false,
         "title": "Latest Lambda issues",
