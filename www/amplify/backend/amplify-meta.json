@@ -17,7 +17,22 @@
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
       "dependsOn": [],
-      "customAuth": false
+      "customAuth": false,
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-myonlinebookstore-dev-214531-deployment/amplify-cfn-templates/auth/myonlinebookstore4fff4554-cloudformation-template.yml",
+        "logicalId": "authmyonlinebookstore4fff4554"
+      },
+      "lastPushTimeStamp": "2021-01-03T21:01:24.723Z",
+      "output": {
+        "AppClientSecret": "jkflhfelifgqd30djulfgvt7o06uqslikrplat6ffafnkkv8jb7",
+        "UserPoolId": "eu-central-1_mTfl2R3xc",
+        "AppClientIDWeb": "38n2i24ks9kk6ilg5pt44bsevn",
+        "AppClientID": "dmllt4flv78gv0etfhb5saikq",
+        "IdentityPoolId": "eu-central-1:fac0bcdd-7fff-40db-a2e6-0cca3de19c9e",
+        "IdentityPoolName": "myonlinebookstore4fff4554_identitypool_4fff4554__dev",
+        "UserPoolName": "myonlinebookstore4fff4554_userpool_4fff4554"
+      },
+      "lastPushDirHash": "StC+giezfuv5WOyCB29Uak3H3zg="
     }
   },
   "hosting": {
