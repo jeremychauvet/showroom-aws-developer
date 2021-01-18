@@ -6,7 +6,7 @@ Please install AWS Amplify CLI : `npm install -g @aws-amplify/cli`
 
 ## Configuration
 
-You must run following commands  in `www` folder : 
+You must run following commands  in `www` folder :
 
 - `amplify configure`
 - `amplify init`
@@ -24,3 +24,4 @@ You must run following commands  in `www` folder :
 - `amplify hosting add`
   - Select the plugin module to execute `Hosting with Amplify Console (Managed hosting with custom domains, Continuous deployment)`
   - Choose a type Continuous deployment `(Git-based deployments)`
+- `amplify push`
