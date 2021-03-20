@@ -25,13 +25,10 @@ resource "aws_dynamodb_table" "book" {
     projection_type = "ALL"
   }
 
-  point_in_time_recovery {
-    enabled = false
-  }
-
   server_side_encryption {
     enabled = true
   }
 
   tags = var.tags
+  #checkov:skip=CKV_AWS_28:Ensure Dynamodb point in time recovery (backup) is enabled
 }

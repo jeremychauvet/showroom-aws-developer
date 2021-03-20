@@ -32,4 +32,3 @@ No Modules.
 | tags | n/a | `map(string)` | <pre>{<br>  "CreatedBy": "Terraform",<br>  "Project": "MyOnlineBookStore"<br>}</pre> | no |
 
 ## Outputs
-
