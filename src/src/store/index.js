@@ -4,15 +4,9 @@ import createPersist from "vuex-localstorage";
 
 Vue.use(Vuex);
 
-// Modules
-import auth from "./modules/auth";
-
 const debug = process.env.NODE_ENV !== "production";
 
 const store = new Vuex.Store({
-  modules: {
-    auth
-  },
   strict: debug,
   plugins: [
     createPersist({
