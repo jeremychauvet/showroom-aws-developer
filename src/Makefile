@@ -4,10 +4,10 @@ clean:
 	rm -rf dist
 
 install:
-	yarn install
+	npm install
 
 build: install
-	yarn build
+	npm build
 
 serve: install
-	yarn serve
+	npm serve
