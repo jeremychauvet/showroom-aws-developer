@@ -4,12 +4,12 @@ repos:
     hooks:
       - id: terraform_fmt
       - id: terraform_docs_replace
-        args: ['--sort-by-required', '--dest=README.md']
+        args: ['--sort-by-required', '--dest=TERRAFORM.md']
       - id: terraform_validate
       - id: terraform_tflint
       - id: checkov
   - repo: git://github.com/pre-commit/pre-commit-hooks
-    rev: v3.3.0
+    rev: v3.4.0
     hooks:
       - id: check-merge-conflict
       - id: detect-aws-credentials
