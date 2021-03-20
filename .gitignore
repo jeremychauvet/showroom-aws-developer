@@ -17,7 +17,7 @@ override.tf.json
 
 # Serverless
 **/.serverless/**
-lambda/layers/*.zip
+*.zip
 
 # MacOS
 **.DS_Store**
