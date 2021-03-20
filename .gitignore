@@ -21,3 +21,8 @@ override.tf.json
 
 # MacOS
 **.DS_Store**
+
+# VueJS
+src/node_modules
+src/dist
+
