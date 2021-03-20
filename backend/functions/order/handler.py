@@ -20,7 +20,7 @@ def order(event, context):
             subsegment.put_annotation("credit_score", credit_score)
         else:
             print(
-                "[INFO] Order rejected : credit score under 660 (actual : "
+                "[INFO] Order rejected : credit score under 660 (given : "
                 + str(credit_score)
                 + ")."
             )
