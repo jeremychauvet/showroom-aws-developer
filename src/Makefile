@@ -10,4 +10,4 @@ build: install
 	npm build
 
 serve: install
-	npm serve
+	npm run serve
