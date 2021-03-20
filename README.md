@@ -1,20 +1,17 @@
 # aws-developer-showroom
 
 This repository is a showroom to demonstrate how AWS can solve developements issues, with services like Lambda, SQS, DynamoDB or Api Gateway.
+To be realistic, we have set a business context for this showroom. Our client is a leader in online book selling. We call it "MyOnlineBookStore".
 
 ## Automation
 
 ![CodeQL](https://github.com/jeremychauvet/aws-developer-showroom/workflows/CodeQL/badge.svg?branch=main)
 
-## Context
-
-To be realistic, we have set a business context for this showroom. Our client is a leader in online book selling. We call it "MyOnlineBookStore".
-
 ## Architecture
 
 This project is based on a serverless architecture. This design is also event driven.
 
-![architecture](./docs/MyOnlineBookStore_architecture.png "Architecture")
+![architecture](./docs/architecture.png "Architecture")
 
 ### Back-office
 
