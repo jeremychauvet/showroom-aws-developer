@@ -27,10 +27,6 @@ package:
   individually: true
   exclude:
     - '**'
-  include:
-    - order/handler.py
-    - book/display/handler.py
-    - book/add/handler.py
 
 functions:
   order:
@@ -39,6 +35,9 @@ functions:
       - { Ref: AwsXraySdkLambdaLayer }
     description: Validate credit score and put order in database.
     timeout: 2
+    package:
+      include:
+        - order/handler.py
     tracing: true
     events:
       - sqs:
@@ -72,6 +71,9 @@ functions:
       - { Ref: AwsXraySdkLambdaLayer }
     description: Add book in database
     timeout: 2
+    package:
+      include:
+        - book/add/handler.py
     tracing: true
     events:
       - sqs:
@@ -97,7 +99,10 @@ functions:
     layers:
       - { Ref: AwsXraySdkLambdaLayer }
     description: Display books available in database
-    timeout: 2
+    timeout: 10
+    package:
+      include:
+        - book/display/handler.py
     tracing: true
     events:
       - httpApi:
