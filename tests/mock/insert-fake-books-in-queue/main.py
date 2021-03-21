@@ -4,6 +4,7 @@
 import sys
 import boto3
 import json
+import random
 from time import sleep
 from faker import Faker
 
@@ -29,7 +30,7 @@ def insert_messages_in_queue():
                     "isbn": str(fake.isbn13()),
                     "title": str(fake.sentence(nb_words=5)),
                     "author": str(fake.name()),
-                    "stock": 0,
+                    "stock": random.randint(0, 20),
                 }
             }
             # Convert dictionnary in JSON.
