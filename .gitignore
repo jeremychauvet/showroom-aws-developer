@@ -25,4 +25,5 @@ override.tf.json
 # VueJS
 src/node_modules
 src/dist
+src/src/.env
 
