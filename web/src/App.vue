@@ -1,18 +1,24 @@
 <template>
   <div id="app">
-    <router-link to="/">HelloWorld</router-link>
-    <router-link to="/home">Home</router-link>
+    <GlobalNav></GlobalNav>
     <router-view />
   </div>
 </template>
 
+<script>
+import GlobalNav from "./components/GlobalNav";
+export default {
+  name: "App",
+  components: {
+    GlobalNav
+  }
+};
+</script>
+
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
