@@ -1,12 +1,10 @@
-import { createApp } from 'vue'
+import Vue from 'vue'
 import App from './App.vue'
-import axios from 'axios'
+import router from "./router"
 
-export const HTTP = axios.create(
-  {
-    baseURL: process.env.BACKEND_URL
-  }
-)
+Vue.config.productionTip = false
 
-
-createApp(App).mount('#app')
+new Vue({
+  router,
+  render: h => h(App),
+}).$mount('#app')
