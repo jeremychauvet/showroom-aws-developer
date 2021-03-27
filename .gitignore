@@ -23,7 +23,7 @@ override.tf.json
 **.DS_Store**
 
 # VueJS
-src/node_modules
-src/dist
-src/src/.env
+web/node_modules
+web/dist
+web/src/.env
 
