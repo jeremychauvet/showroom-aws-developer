@@ -1,12 +1,32 @@
 <template>
   <div class="books">
     <h1>Books</h1>
+
+    <div>
+      {{ info }}
+    </div>
   </div>
 </template>
 
 <script>
+import { api } from '../api';
+
 export default {
-  name: 'Books'
+  name: 'Books',
+  data () {
+    return {
+      info: null
+    }
+  },
+  mounted () {
+    api.get('https://dzhchde09c.execute-api.eu-central-1.amazonaws.com/book/display')
+    .then(response => {
+      this.info = response
+    })
+    .catch(e => {
+      this.errors.push(e)
+    })
+  }
 }
 </script>
 
