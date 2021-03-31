@@ -30,7 +30,7 @@ def insert_messages_in_queue():
                     "isbn": str(fake.isbn13()),
                     "title": str(fake.sentence(nb_words=5)),
                     "author": str(fake.name()),
-                    "stock": random.randint(0, 20),
+                    "stock": str(random.randint(0, 20)),
                 }
             }
             # Convert dictionnary in JSON.
