@@ -16,6 +16,11 @@ variable "sqs_message_retention_seconds" {
   default     = 86400
 }
 
+variable "dns_domain" {
+  description = "DNS FQDN used for this project in main area in Route53."
+  type        = string
+}
+
 variable "tags" {
   type = map(string)
   default = {
