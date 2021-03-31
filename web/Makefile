@@ -4,7 +4,7 @@ install:
 	npm install
 
 build:
-	npm build
+	npm run build
 
 serve: install
 	npm run serve
