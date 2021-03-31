@@ -8,6 +8,7 @@ from aws_xray_sdk.core import patch_all
 patch_all()
 subsegment = xray_recorder.begin_subsegment("annotations")
 
+
 @xray_recorder.capture("# Display books available in library")
 def display_book(event, context):
 
@@ -30,9 +31,10 @@ def display_book(event, context):
             "headers": {
                 "Content-Type": "application/json",
                 "Access-Control-Allow-Origin": "*",
-                "Access-Control-Allow-Credentials": True
+                "Access-Control-Allow-Headers": "Content-Type",
+                "Access-Control-Allow-Methods": "OPTIONS,GET",
             },
-            "body": json.dumps(response["Items"])
+            "body": json.dumps(response["Items"]),
         }
 
     except:

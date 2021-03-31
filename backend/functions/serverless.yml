@@ -3,6 +3,7 @@ frameworkVersion: '2'
 
 provider:
   name: aws
+  lambdaHashingVersion: 20201221
   runtime: python3.8
   stage: dev
   region: eu-central-1
@@ -25,18 +26,18 @@ provider:
 
 package:
   individually: true
-  exclude:
-    - '**'
+  patterns:
+    - '!**'
 
 functions:
   order:
     handler: order/handler.order
     layers:
       - { Ref: AwsXraySdkLambdaLayer }
-    description: Validate credit score and put order in database.
+    description: Validate credit score and put order in DynamoDB.
     timeout: 2
     package:
-      include:
+      patterns:
         - order/handler.py
     tracing: true
     events:
@@ -69,10 +70,10 @@ functions:
     handler: book/add/handler.add_book
     layers:
       - { Ref: AwsXraySdkLambdaLayer }
-    description: Add book in database
+    description: Add book in DynamoDB.
     timeout: 2
     package:
-      include:
+      patterns:
         - book/add/handler.py
     tracing: true
     events:
@@ -98,18 +99,20 @@ functions:
     handler: book/display/handler.display_book
     layers:
       - { Ref: AwsXraySdkLambdaLayer }
-    description: Display books available in database
+    description: Return books stored in DynamoDB.
     timeout: 10
     package:
-      include:
+      patterns:
         - book/display/handler.py
     tracing: true
     events:
       - http:
-          method: GET
+          method: get
           path: /book/display
           cors:
             origin: '*'
+            headers:
+              - Content-Type
     tags:
       App: MyOnlineBookStore
       Environment: dev
