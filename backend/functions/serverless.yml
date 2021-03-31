@@ -105,9 +105,11 @@ functions:
         - book/display/handler.py
     tracing: true
     events:
-      - httpApi:
+      - http:
           method: GET
           path: /book/display
+          cors:
+            origin: '*'
     tags:
       App: MyOnlineBookStore
       Environment: dev
