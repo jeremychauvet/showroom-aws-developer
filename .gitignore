@@ -8,6 +8,7 @@ override.tf
 override.tf.json
 *_override.tf
 *_override.tf.json
+infrastructure/terraform.tfvars
 
 # Infracost
 **/plan.*
@@ -26,4 +27,3 @@ override.tf.json
 web/node_modules
 web/dist
 web/.env
-
