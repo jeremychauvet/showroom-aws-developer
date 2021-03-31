@@ -1,12 +1,12 @@
 import sys
 import os
+import json
 import boto3
 from aws_xray_sdk.core import xray_recorder
 from aws_xray_sdk.core import patch_all
 
 patch_all()
 subsegment = xray_recorder.begin_subsegment("annotations")
-
 
 @xray_recorder.capture("# Display books available in library")
 def display_book(event, context):
@@ -24,7 +24,16 @@ def display_book(event, context):
         subsegment.put_annotation("[INFO]", "Starting table scan")
         # Get temporary all items with a scan, bad for performance, but development related.
         response = table.scan()
-        return response["Items"]
+        return {
+            "isBase64Encoded": False,
+            "statusCode": 200,
+            "headers": {
+                "Content-Type": "application/json",
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Credentials": True
+            },
+            "body": json.dumps(response["Items"])
+        }
 
     except:
         print("[ERROR] " + str(sys.exc_info()[1]))
