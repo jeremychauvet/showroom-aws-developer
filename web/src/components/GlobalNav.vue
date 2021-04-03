@@ -38,6 +38,10 @@ export default {
   letter-spacing: 2px;
 }
 
+.navbar-brand-custom:hover {
+  color: #D95B43;
+}
+
 .nav-link {
   color: #636363;
   font-weight: 500;
