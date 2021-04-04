@@ -1,71 +1,49 @@
 <template>
   <div class="home">
-    <h1>Home</h1>
+    <div class="jumbotron">
+      <h1 class="display-4">Find the perfect book.</h1>
+      <p class="lead">In this digital world, find the perfect book is difficult as never. Find it here. Book your book.</p>
+    </div>
 
-    <div class="row row-cols-1 row-cols-md-3 g-4">
-      <div class="col">
-        <div class="card h-100">
+    <div class="latest-books">
+      <h2>Latest books added</h2>
+
+      <div class="card-deck">
+        <div class="card">
+          <img class="card-img-top" src="@/assets/books/sincerely-media-_f3VOwm2YWg-unsplash.jpg" alt="Card image cap">
           <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">{{ url }}</p>
+            <h5 class="card-title">Issiah</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
           </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card h-100">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This is a short card.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card h-100">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card h-100">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          <div class="card-footer">
+            <small class="text-muted">3 books in stock.</small>
           </div>
         </div>
       </div>
     </div>
-
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Home',
-  data() {
-    return {
-        url: process.env.VUE_APP_ROOT_API
-    }
-  }
+  name: 'Home'
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
-h1 {
-  font-weight: 700 !important;
-  font-family: 'Roboto', sans-serif;
+.jumbotron {
+  margin: 5rem 0;
+  padding: 2rem 0;
+  text-align: center;
+  color: #404040;
+  background-image: url("../assets/hero.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 40rem;
 }
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
+
+.card {
+  max-width: 22rem;
 }
 </style>
