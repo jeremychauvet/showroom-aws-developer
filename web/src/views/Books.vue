@@ -2,7 +2,7 @@
   <div class="books">
     <h1>Books</h1>
 
-    <div class="alert alert-danger" role="alert" v-if="books === null">
+    <div class="alert alert-danger" role="alert" v-if="books === null && error != null">
       No books available.
     </div>
     <div class="row row-cols-1 row-cols-md-2 g-4" v-else>
