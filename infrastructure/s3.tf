@@ -1,6 +1,6 @@
 resource "aws_s3_bucket" "frontend" {
   bucket        = var.dns_domain
-  acl           = "public-read"
+  acl           = "private"
   force_destroy = true
 
   website {
