@@ -1,21 +1,28 @@
 <template>
   <div class="books">
-    <h1>Books</h1>
 
-    <div class="alert alert-danger" role="alert" v-if="books === null && error != null">
-      No books available.
-    </div>
-    <div class="row row-cols-1 row-cols-md-2 g-4" v-else>
-      <div class="col" v-for="book in books" :key="book.message">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">{{ book.BookTitle }}</h5>
-            <h6 class="card-subtitle mb-2 text-muted">{{ book.BookAuthor }}</h6>
-            <p class="card-text">Stock : {{ book.BookStock }} - ISBN : {{ book.ISBN }}</p>
-            <a href="#" class="card-link">Click to buy this book</a>
+    <div class="container">
+      <h2>Books</h2>
+
+      <div class="alert alert-info" role="alert" v-if="books === null">
+        Loading
+      </div>
+
+      <div class="alert alert-danger" role="alert" v-if="books === null && error != null">
+        No books available.
+      </div>
+      <div class="row" v-else>
+        <div class="col-md-4 mb-4" v-for="book in books" :key="book.message" >
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">{{ book.BookTitle }}</h5>
+              <h6 class="card-subtitle mb-2 text-muted">{{ book.BookAuthor }}</h6>
+              <p class="card-text">Stock : {{ book.BookStock }} - ISBN : {{ book.ISBN }}</p>
+            </div>
           </div>
         </div>
       </div>
+
     </div>
   </div>
 </template>
@@ -58,11 +65,5 @@ li {
 }
 a {
   color: #42b983;
-}
-
-img.cover {
-  width: 100%;
-  height: 100%;
-  margin: 0 12px 0 -12px;
 }
 </style>
